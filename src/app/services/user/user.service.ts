@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 
 import { ENDPOINTS } from 'src/app/constants/endpoints.const';
 import { TOKEN_KEY } from 'src/app/constants/storage.const';
@@ -12,10 +12,16 @@ import { ApiService } from './../api/api.service';
   providedIn: 'root',
 })
 export class UserService {
+  private _hasSession$ = new BehaviorSubject<boolean>(false);
+
   constructor(
     private readonly api: ApiService,
     private readonly storageService: StorageService
   ) {}
+
+  get hasSession$(): BehaviorSubject<boolean> {
+    return this._hasSession$;
+  }
 
   login(
     username: string,
@@ -32,7 +38,17 @@ export class UserService {
       .pipe(
         tap((response: RequestResponse<UserLogin>) => {
           this.storageService.setCookieItem(TOKEN_KEY, response?.data?.token);
+          this.hasSession$.next(true);
         })
       );
+  }
+
+  logout() {
+    this.storageService.deleteAllCookies();
+    this.hasSession$.next(false);
+  }
+
+  hasLogin(): boolean {
+    return !!this.storageService.getCookieItem(TOKEN_KEY);
   }
 }
