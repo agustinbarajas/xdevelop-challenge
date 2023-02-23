@@ -3,25 +3,25 @@
     <mat-card-content>
       <form [formGroup]="loginForm" class="flex flex-col gap-2">
         <mat-form-field appearance="fill">
-          <mat-label>Username</mat-label>
+          <mat-label>Usuario</mat-label>
           <input type="email" formControlName="username" matInput />
           <mat-error *ngIf="loginForm.controls['username'].hasError('email')">
-            Enter a valid email address
+            Ingresa un correo válido
           </mat-error>
           <mat-error
             *ngIf="loginForm.controls['username'].hasError('required')"
           >
-            Username is <strong>required</strong>
+            El usuario es <strong>requerido</strong>
           </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <mat-label>Password</mat-label>
+          <mat-label>Contraseña</mat-label>
           <input type="password" formControlName="password" matInput />
           <mat-error
             *ngIf="loginForm.controls['password'].hasError('required')"
           >
-            Password is <strong>required</strong>
+            La contraseña es <strong>requerida</strong>
           </mat-error>
         </mat-form-field>
       </form>
@@ -35,7 +35,7 @@
         [disabled]="loginForm.invalid"
         (click)="login()"
       >
-        Login
+        Iniciar sesión
       </button>
     </mat-card-actions>
   </mat-card>
