@@ -12,13 +12,13 @@ export class StorageService {
 
   getCookieItem(name: string): string {
     if (this.cookieService.check(`${this.prefixName}-${name}`)) {
-      return this.cookieService.get(`${this.prefixName}-${name}`);
+      return this.decode(this.cookieService.get(`${this.prefixName}-${name}`));
     }
     return '';
   }
 
   setCookieItem(name: string, value: string): void {
-    this.cookieService.set(`${this.prefixName}-${name}`, value, {
+    this.cookieService.set(`${this.prefixName}-${name}`, this.encode(value), {
       expires: 2,
       path: '/',
       sameSite: 'Strict',
@@ -33,5 +33,13 @@ export class StorageService {
 
   deleteAllCookies(): void {
     this.cookieService.deleteAll();
+  }
+
+  private encode(data: string): string {
+    return window.btoa(data);
+  }
+
+  private decode(data: string): string {
+    return window.atob(data);
   }
 }
