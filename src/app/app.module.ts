@@ -7,6 +7,7 @@ import { CookieService } from 'ngx-cookie-service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ComponentsModule } from './components/components.module';
 import { LayoutComponent } from './layout/layout/layout.component';
 
 @NgModule({
@@ -16,6 +17,7 @@ import { LayoutComponent } from './layout/layout/layout.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ComponentsModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],
