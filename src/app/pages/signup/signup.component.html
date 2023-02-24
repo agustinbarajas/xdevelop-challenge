@@ -1,5 +1,5 @@
 <mat-stepper orientation="vertical" [linear]="true" #stepper>
-  <mat-step [stepControl]="personalForm" class="w-full flex justify-center">
+  <mat-step [stepControl]="personalForm">
     <form [formGroup]="personalForm" class="flex flex-col gap-2 w-full pt-5">
       <ng-template matStepLabel>Datos personales</ng-template>
 
@@ -12,6 +12,11 @@
             placeholder="Ingrese sus nombres"
             required
           />
+          <mat-error *ngIf="personalForm.controls['nombres']?.invalid">
+            {{
+              getMessage(getArray(personalForm.controls["nombres"].errors)[0])
+            }}
+          </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill" class="w-full md:w-1/2">
           <mat-label>Apellidos</mat-label>
@@ -21,6 +26,11 @@
             placeholder="Ingrese sus apellidos"
             required
           />
+          <mat-error *ngIf="personalForm.controls['apellidos']?.invalid">
+            {{
+              getMessage(getArray(personalForm.controls["apellidos"].errors)[0])
+            }}
+          </mat-error>
         </mat-form-field>
       </div>
 
@@ -33,6 +43,12 @@
             placeholder="Ingrese su número de teléfono"
             required
           />
+          <mat-hint>Ingrese solo 10 números</mat-hint>
+          <mat-error *ngIf="personalForm.controls['telefono']?.invalid">
+            {{
+              getMessage(getArray(personalForm.controls["telefono"].errors)[0])
+            }}
+          </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill" class="w-full md:w-1/2">
           <mat-label>Celular</mat-label>
@@ -42,6 +58,12 @@
             placeholder="Ingrese su número de celular"
             required
           />
+          <mat-hint>Ingrese solo 10 números</mat-hint>
+          <mat-error *ngIf="personalForm.controls['celular']?.invalid">
+            {{
+              getMessage(getArray(personalForm.controls["celular"].errors)[0])
+            }}
+          </mat-error>
         </mat-form-field>
       </div>
 
@@ -60,6 +82,13 @@
             ></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </div>
+          <mat-error *ngIf="personalForm.controls['fecha_origen']?.invalid">
+            {{
+              getMessage(
+                getArray(personalForm.controls["fecha_origen"].errors)[0]
+              )
+            }}
+          </mat-error>
         </mat-form-field>
       </div>
 
@@ -73,6 +102,9 @@
             placeholder="Ingrese su correo electrónico"
             required
           />
+          <mat-error *ngIf="personalForm.controls['email']?.invalid">
+            {{ getMessage(getArray(personalForm.controls["email"].errors)[0]) }}
+          </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill" class="w-full md:w-1/2">
           <mat-label>Contraseña</mat-label>
@@ -83,6 +115,15 @@
             placeholder="Ingrese su contraseña"
             required
           />
+          <mat-hint>
+            Ingrese 8 caracteres con por lo menos una letra mayúscula, una
+            minúscula y un número
+          </mat-hint>
+          <mat-error *ngIf="personalForm.controls['password']?.invalid">
+            {{
+              getMessage(getArray(personalForm.controls["password"].errors)[0])
+            }}
+          </mat-error>
         </mat-form-field>
       </div>
 
@@ -95,6 +136,9 @@
             placeholder="Ingrese su cargo"
             required
           />
+          <mat-error *ngIf="personalForm.controls['cargo']?.invalid">
+            {{ getMessage(getArray(personalForm.controls["cargo"].errors)[0]) }}
+          </mat-error>
         </mat-form-field>
       </div>
 
@@ -107,6 +151,13 @@
             placeholder="Ingrese la forma de enterado"
             required
           />
+          <mat-error *ngIf="personalForm.controls['forma_enterado']?.invalid">
+            {{
+              getMessage(
+                getArray(personalForm.controls["forma_enterado"].errors)[0]
+              )
+            }}
+          </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill" class="w-full md:w-1/2">
           <mat-label>Otra forma de entreado</mat-label>
@@ -116,6 +167,15 @@
             placeholder="Ingrese otra forma de enterado"
             required
           />
+          <mat-error
+            *ngIf="personalForm.controls['otro_forma_enterado']?.invalid"
+          >
+            {{
+              getMessage(
+                getArray(personalForm.controls["otro_forma_enterado"].errors)[0]
+              )
+            }}
+          </mat-error>
         </mat-form-field>
       </div>
 
@@ -133,7 +193,7 @@
   </mat-step>
 
   <mat-step [stepControl]="companyForm">
-    <form [formGroup]="companyForm" class="pt-5">
+    <form [formGroup]="companyForm" class="flex flex-col gap-2 w-full pt-5">
       <ng-template matStepLabel>Datos de la empresa</ng-template>
 
       <div class="flex flex-col md:flex-row gap-2 w-full">
@@ -145,6 +205,13 @@
             placeholder="Ingrese el nombre de la empresa"
             required
           />
+          <mat-error *ngIf="companyForm.controls['nombre_empresa']?.invalid">
+            {{
+              getMessage(
+                getArray(companyForm.controls["nombre_empresa"].errors)[0]
+              )
+            }}
+          </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill" class="w-full md:w-1/2">
           <mat-label>Razón social</mat-label>
@@ -154,6 +221,13 @@
             placeholder="Ingrese la razón social"
             required
           />
+          <mat-error *ngIf="companyForm.controls['razon_social']?.invalid">
+            {{
+              getMessage(
+                getArray(companyForm.controls["razon_social"].errors)[0]
+              )
+            }}
+          </mat-error>
         </mat-form-field>
       </div>
 
@@ -166,6 +240,13 @@
             placeholder="Ingrese la url de la empresa"
             required
           />
+          <mat-error *ngIf="companyForm.controls['url_empresa']?.invalid">
+            {{
+              getMessage(
+                getArray(companyForm.controls["url_empresa"].errors)[0]
+              )
+            }}
+          </mat-error>
         </mat-form-field>
       </div>
 
@@ -178,6 +259,12 @@
             placeholder="Ingrese la cantidad de hombres"
             required
           />
+          <mat-hint>Ingrese solo números</mat-hint>
+          <mat-error *ngIf="companyForm.controls['hombres']?.invalid">
+            {{
+              getMessage(getArray(companyForm.controls["hombres"].errors)[0])
+            }}
+          </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill" class="w-full md:w-1/2">
           <mat-label>Mujeres</mat-label>
@@ -187,6 +274,12 @@
             placeholder="Ingrese la cantidad de mujeres"
             required
           />
+          <mat-hint>Ingrese solo números</mat-hint>
+          <mat-error *ngIf="companyForm.controls['mujeres']?.invalid">
+            {{
+              getMessage(getArray(companyForm.controls["mujeres"].errors)[0])
+            }}
+          </mat-error>
         </mat-form-field>
       </div>
 
@@ -199,6 +292,12 @@
             placeholder="Ingrese la cantidad de personas no binarias"
             required
           />
+          <mat-hint>Ingrese solo números</mat-hint>
+          <mat-error *ngIf="companyForm.controls['no_binario']?.invalid">
+            {{
+              getMessage(getArray(companyForm.controls["no_binario"].errors)[0])
+            }}
+          </mat-error>
         </mat-form-field>
       </div>
 
@@ -212,6 +311,9 @@
             rows="3"
             required
           ></textarea>
+          <mat-error *ngIf="companyForm.controls['vision']?.invalid">
+            {{ getMessage(getArray(companyForm.controls["vision"].errors)[0]) }}
+          </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill" class="w-full md:w-1/2">
           <mat-label>Misión</mat-label>
@@ -222,6 +324,9 @@
             rows="3"
             required
           ></textarea>
+          <mat-error *ngIf="companyForm.controls['mision']?.invalid">
+            {{ getMessage(getArray(companyForm.controls["mision"].errors)[0]) }}
+          </mat-error>
         </mat-form-field>
       </div>
 
@@ -235,6 +340,11 @@
             rows="3"
             required
           ></textarea>
+          <mat-error *ngIf="companyForm.controls['clientes']?.invalid">
+            {{
+              getMessage(getArray(companyForm.controls["clientes"].errors)[0])
+            }}
+          </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill" class="w-full md:w-1/2">
           <mat-label>Usuarios</mat-label>
@@ -245,6 +355,11 @@
             rows="3"
             required
           ></textarea>
+          <mat-error *ngIf="companyForm.controls['usuarios']?.invalid">
+            {{
+              getMessage(getArray(companyForm.controls["usuarios"].errors)[0])
+            }}
+          </mat-error>
         </mat-form-field>
       </div>
 
@@ -258,6 +373,11 @@
             rows="3"
             required
           ></textarea>
+          <mat-error *ngIf="companyForm.controls['aliados']?.invalid">
+            {{
+              getMessage(getArray(companyForm.controls["aliados"].errors)[0])
+            }}
+          </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill" class="w-full md:w-1/2">
           <mat-label>Grupos de interés</mat-label>
@@ -268,6 +388,13 @@
             rows="3"
             required
           ></textarea>
+          <mat-error *ngIf="companyForm.controls['grupos_de_interes']?.invalid">
+            {{
+              getMessage(
+                getArray(companyForm.controls["grupos_de_interes"].errors)[0]
+              )
+            }}
+          </mat-error>
         </mat-form-field>
       </div>
 
@@ -281,6 +408,13 @@
             rows="3"
             required
           ></textarea>
+          <mat-error *ngIf="companyForm.controls['competencia']?.invalid">
+            {{
+              getMessage(
+                getArray(companyForm.controls["competencia"].errors)[0]
+              )
+            }}
+          </mat-error>
         </mat-form-field>
       </div>
 
@@ -305,6 +439,16 @@
             placeholder="Ingrese el nombre del programa"
             required
           />
+          <mat-hint>
+            Si no está participando en un programa, solo ingrese N/A
+          </mat-hint>
+          <mat-error *ngIf="companyForm.controls['cual_programa']?.invalid">
+            {{
+              getMessage(
+                getArray(companyForm.controls["cual_programa"].errors)[0]
+              )
+            }}
+          </mat-error>
         </mat-form-field>
       </div>
 
@@ -319,6 +463,15 @@
               placeholder="Ingrese las ventas del primer año"
               required
             />
+            <mat-error
+              *ngIf="companyForm.get('nivel_de_ventas.anio_1')?.invalid"
+            >
+              {{
+                getMessage(
+                  getArray(companyForm.get("nivel_de_ventas.anio_1")?.errors)[0]
+                )
+              }}
+            </mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill" class="w-full md:w-1/2">
             <mat-label>Segundo año</mat-label>
@@ -328,6 +481,15 @@
               placeholder="Ingrese las ventas del segundo año"
               required
             />
+            <mat-error
+              *ngIf="companyForm.get('nivel_de_ventas.anio_2')?.invalid"
+            >
+              {{
+                getMessage(
+                  getArray(companyForm.get("nivel_de_ventas.anio_2")?.errors)[0]
+                )
+              }}
+            </mat-error>
           </mat-form-field>
         </div>
 
@@ -340,6 +502,15 @@
               placeholder="Ingrese las ventas del tercer año"
               required
             />
+            <mat-error
+              *ngIf="companyForm.get('nivel_de_ventas.anio_3')?.invalid"
+            >
+              {{
+                getMessage(
+                  getArray(companyForm.get("nivel_de_ventas.anio_3")?.errors)[0]
+                )
+              }}
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -359,7 +530,7 @@
   </mat-step>
 
   <mat-step [stepControl]="addressForm">
-    <form [formGroup]="addressForm" class="pt-5">
+    <form [formGroup]="addressForm" class="flex flex-col gap-2 w-full pt-5">
       <ng-template matStepLabel>Datos del domicilio</ng-template>
 
       <div class="flex flex-col md:flex-row gap-2 w-full">
@@ -371,6 +542,17 @@
             placeholder="Ingrese el lugar de intervención"
             required
           />
+          <mat-error
+            *ngIf="addressForm.controls['geografia_intervencion']?.invalid"
+          >
+            {{
+              getMessage(
+                getArray(
+                  addressForm.controls["geografia_intervencion"].errors
+                )[0]
+              )
+            }}
+          </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill" class="w-full md:w-1/2">
           <mat-label>Código postal</mat-label>
@@ -380,6 +562,10 @@
             placeholder="Ingrese el código postal"
             required
           />
+          <mat-hint>Ingrese solo 5 caracteres</mat-hint>
+          <mat-error *ngIf="addressForm.controls['cp']?.invalid">
+            {{ getMessage(getArray(addressForm.controls["cp"].errors)[0]) }}
+          </mat-error>
         </mat-form-field>
       </div>
 
@@ -392,6 +578,13 @@
             placeholder="Ingrese el número de calle"
             required
           />
+          <mat-error *ngIf="addressForm.controls['calle_numero']?.invalid">
+            {{
+              getMessage(
+                getArray(addressForm.controls["calle_numero"].errors)[0]
+              )
+            }}
+          </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill" class="w-full md:w-1/2">
           <mat-label>Colonia</mat-label>
@@ -401,6 +594,11 @@
             placeholder="Ingrese la colonia"
             required
           />
+          <mat-error *ngIf="addressForm.controls['colonia']?.invalid">
+            {{
+              getMessage(getArray(addressForm.controls["colonia"].errors)[0])
+            }}
+          </mat-error>
         </mat-form-field>
       </div>
 
@@ -413,6 +611,15 @@
             placeholder="Ingrese el municipio o delegación"
             required
           />
+          <mat-error
+            *ngIf="addressForm.controls['delegacion_municipio']?.invalid"
+          >
+            {{
+              getMessage(
+                getArray(addressForm.controls["delegacion_municipio"].errors)[0]
+              )
+            }}
+          </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill" class="w-full md:w-1/2">
           <mat-label>Ciudad</mat-label>
@@ -422,6 +629,9 @@
             placeholder="Ingrese la ciudad"
             required
           />
+          <mat-error *ngIf="addressForm.controls['ciudad']?.invalid">
+            {{ getMessage(getArray(addressForm.controls["ciudad"].errors)[0]) }}
+          </mat-error>
         </mat-form-field>
       </div>
 
@@ -434,6 +644,9 @@
             placeholder="Ingrese el país"
             required
           />
+          <mat-error *ngIf="addressForm.controls['pais']?.invalid">
+            {{ getMessage(getArray(addressForm.controls["pais"].errors)[0]) }}
+          </mat-error>
         </mat-form-field>
       </div>
 

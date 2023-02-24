@@ -4,12 +4,14 @@ import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 
 import { UserService } from 'src/app/services/user/user.service';
+import { Participant } from 'src/app/types/participant.type';
 import {
   SignupResponse,
   SignupSuccessResponse,
 } from 'src/app/types/request-response.type';
 import { createSignupForm } from 'src/app/utils/createSignupForm.helper';
-import { Participant } from './../../types/participant.type';
+import { getErrorMessage } from 'src/app/utils/getErrorMessage.helper';
+import { parseErrorsToArray } from 'src/app/utils/parseErrorsToArray.helper';
 
 @Component({
   selector: 'app-signup',
@@ -18,6 +20,8 @@ import { Participant } from './../../types/participant.type';
 export class SignupComponent implements OnDestroy {
   private _signupForm: FormGroup;
   private readonly unsubscribe$ = new Subject();
+  readonly getMessage = getErrorMessage;
+  readonly getArray = parseErrorsToArray;
 
   get personalForm(): FormGroup {
     return this._signupForm.controls['personalForm'] as FormGroup;
