@@ -3,7 +3,11 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 
 import { ENDPOINTS } from 'src/app/constants/endpoints.const';
 import { TOKEN_KEY } from 'src/app/constants/storage.const';
-import { RequestResponse } from 'src/app/types/request-response.type';
+import { Participant } from 'src/app/types/participant.type';
+import {
+  RequestResponse,
+  SignupResponse,
+} from 'src/app/types/request-response.type';
 import { UserLogin } from 'src/app/types/user-login.type';
 import { StorageService } from '../storage/storage.service';
 import { ApiService } from './../api/api.service';
@@ -41,6 +45,13 @@ export class UserService {
           this.hasSession$.next(true);
         })
       );
+  }
+
+  signup(participant: Participant): Observable<SignupResponse> {
+    return this.api.post<SignupResponse>({
+      endpoint: ENDPOINTS.SIGNUP,
+      body: participant,
+    });
   }
 
   logout() {
