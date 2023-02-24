@@ -50,7 +50,7 @@ export const createSignupForm = (fb: FormBuilder) => {
       aliados: ['', Validators.required],
       grupos_de_interes: ['', Validators.required],
       competencia: ['', Validators.required],
-      participando_en_programas_de_aceleracion: ['no', Validators.required],
+      participado_en_programas_de_aceleracion: ['no', Validators.required],
       cual_programa: ['', Validators.required],
       nivel_de_ventas: fb.group({
         anio_1: ['', Validators.required],
