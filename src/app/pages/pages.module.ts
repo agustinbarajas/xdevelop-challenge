@@ -9,9 +9,10 @@ import { MatInputModule } from '@angular/material/input';
 
 import { LoginComponent } from './login/login.component';
 import { PagesRoutingModule } from './pages-routing.module';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, SignupComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
