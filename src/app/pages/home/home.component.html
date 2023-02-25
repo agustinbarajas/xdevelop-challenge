@@ -1,1 +1,84 @@
-<p>home works!</p>
+<section class="px-3">
+  <div *ngIf="about$ | async as about" class="mb-4">
+    <label class="text-2xl font-bold" id="about">
+      {{ about?.acf?.titulo }}
+    </label>
+    <p [innerHTML]="about?.acf?.descripcion" class="text-lg text-justify"></p>
+
+    <label class="text-xl font-semibold">
+      {{ about?.acf?.bases?.subtitulo }}
+    </label>
+    <p
+      [innerHTML]="about?.acf?.bases?.contenido"
+      class="text-lg text-justify"
+    ></p>
+
+    <label class="text-xl font-semibold">
+      {{ about?.acf?.fechas_importantes?.subtitulo }}
+    </label>
+    <ul class="text-lg">
+      <li *ngFor="let date of about?.acf?.fechas_importantes?.fechas">
+        {{ date?.fecha }}
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="categories$ | async as categories" class="mb-4">
+    <label class="text-2xl font-bold" id="categories">
+      {{ categories?.acf?.titulo }}
+    </label>
+    <p
+      [innerHTML]="categories?.acf?.descripcion"
+      class="text-lg text-justify"
+    ></p>
+
+    <div *ngFor="let category of categories?.acf?.categorias">
+      <div
+        class="flex gap-2 flex-col justify-center items-center md:flex-row md:justify-start"
+      >
+        <img [src]="category?.imagen" [alt]="category?.titulo" />
+        <div class="flex flex-col gap-2">
+          <a
+            class="text-xl font-semibold"
+            [href]="category?.link"
+            target="_blank"
+          >
+            {{ category?.titulo }}
+          </a>
+          <p
+            [innerHTML]="category?.descripcion"
+            class="text-lg text-justify"
+          ></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-2 items-center">
+      <label class="text-lg font-bold">Compártelo</label>
+      <div class="flex gap-2">
+        <a
+          [href]="categories?.acf?.links_compartelo?.link_facebook"
+          target="_blank"
+          mat-icon-button
+        >
+          <mat-icon>facebook</mat-icon>
+        </a>
+
+        <a
+          [href]="categories?.acf?.links_compartelo?.link_instagram"
+          target="_blank"
+          mat-icon-button
+        >
+          <mat-icon>share</mat-icon>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="judges$ | async as judges" class="mb-4">
+    <label class="text-2xl font-bold" id="judges">
+      {{ judges?.acf?.titulo }}
+    </label>
+    <p [innerHTML]="judges?.acf?.descripcion" class="text-lg text-justify"></p>
+  </div>
+</section>

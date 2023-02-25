@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatStepperModule } from '@angular/material/stepper';
@@ -30,6 +31,7 @@ import { SignupComponent } from './signup/signup.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatRadioModule,
+    MatIconModule,
   ],
 })
 export class PagesModule {}
