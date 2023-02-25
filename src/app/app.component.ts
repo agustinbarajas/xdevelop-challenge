@@ -20,8 +20,6 @@ export class AppComponent implements OnInit, OnDestroy {
       .subscribe((hasLogin) => {
         if (hasLogin) {
           this.router.navigate(['/']);
-        } else {
-          this.router.navigate(['/login']);
         }
       });
   }
