@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 
 import { UserService } from 'src/app/services/user/user.service';
+import { navigateToElementId } from 'src/app/utils/navigateToElementId.helper';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +11,7 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class HeaderComponent implements OnDestroy {
   hasLogin = false;
+  readonly goToSection = navigateToElementId;
   private readonly unsubscribe$ = new Subject();
 
   constructor(
