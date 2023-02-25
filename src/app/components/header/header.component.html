@@ -2,28 +2,36 @@
   <h1>Goula Awards</h1>
   <div class="flex gap-3 items-center" *ngIf="hasLogin">
     <a
-      class="text-sm text-blue-700 hover:text-blue-500 cursor-pointer"
+      class="flex flex-col justify-center items-center text-sm text-blue-700 hover:text-blue-500 cursor-pointer"
+      matTooltip="Ir a sobre los premios"
       (click)="goToSection('about')"
     >
-      Sobre los premios
+      <mat-icon>info</mat-icon>
+      <span class="hidden sm:block">Sobre los premios</span>
     </a>
     <a
-      class="text-sm text-blue-700 hover:text-blue-500 cursor-pointer"
+      class="flex flex-col justify-center items-center text-sm text-blue-700 hover:text-blue-500 cursor-pointer"
+      matTooltip="Ir a las categorías"
       (click)="goToSection('categories')"
     >
-      Categorías
+      <mat-icon>category</mat-icon>
+      <span class="hidden sm:block">Categorías</span>
     </a>
     <a
-      class="text-sm text-blue-700 hover:text-blue-500 cursor-pointer"
+      class="flex flex-col justify-center items-center text-sm text-blue-700 hover:text-blue-500 cursor-pointer"
+      matTooltip="Ir a los jueces"
       (click)="goToSection('judges')"
     >
-      Jueces
+      <mat-icon>gavel</mat-icon>
+      <span class="hidden sm:block">Jueces</span>
     </a>
     <a
-      class="text-sm text-red-600 hover:text-red-400 cursor-pointer"
+      class="flex flex-col justify-center items-center text-sm text-red-600 hover:text-red-400 cursor-pointer"
+      matTooltip="Cerrar la sesión"
       (click)="logout()"
     >
-      Cerrar sesión
+      <mat-icon>logout</mat-icon>
+      <span class="hidden sm:block">Cerrar sesión</span>
     </a>
   </div>
 </mat-toolbar>
