@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -21,6 +22,7 @@ import { LayoutComponent } from './layout/layout/layout.component';
     HttpClientModule,
     ComponentsModule,
     MatSnackBarModule,
+    MatProgressBarModule,
   ],
   providers: [
     CookieService,
