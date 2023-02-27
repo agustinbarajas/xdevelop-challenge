@@ -1,0 +1,104 @@
+<form [formGroup]="form" class="flex flex-col gap-2 w-full pt-5">
+  <div class="flex flex-col md:flex-row gap-2 w-full">
+    <mat-form-field appearance="fill" class="w-full md:w-1/2">
+      <mat-label>Lugar de intervención</mat-label>
+      <input
+        matInput
+        formControlName="geografia_intervencion"
+        placeholder="Ingrese el lugar de intervención"
+        required
+      />
+      <mat-error *ngIf="form.controls['geografia_intervencion']?.invalid">
+        {{
+          getMessage(
+            getArray(form.controls["geografia_intervencion"].errors)[0]
+          )
+        }}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="w-full md:w-1/2">
+      <mat-label>Código postal</mat-label>
+      <input
+        matInput
+        formControlName="cp"
+        placeholder="Ingrese el código postal"
+        required
+      />
+      <mat-hint>Ingrese solo 5 caracteres</mat-hint>
+      <mat-error *ngIf="form.controls['cp']?.invalid">
+        {{ getMessage(getArray(form.controls["cp"].errors)[0]) }}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="flex flex-col md:flex-row gap-2 w-full">
+    <mat-form-field appearance="fill" class="w-full md:w-1/2">
+      <mat-label>Número de calle</mat-label>
+      <input
+        matInput
+        formControlName="calle_numero"
+        placeholder="Ingrese el número de calle"
+        required
+      />
+      <mat-error *ngIf="form.controls['calle_numero']?.invalid">
+        {{ getMessage(getArray(form.controls["calle_numero"].errors)[0]) }}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="w-full md:w-1/2">
+      <mat-label>Colonia</mat-label>
+      <input
+        matInput
+        formControlName="colonia"
+        placeholder="Ingrese la colonia"
+        required
+      />
+      <mat-error *ngIf="form.controls['colonia']?.invalid">
+        {{ getMessage(getArray(form.controls["colonia"].errors)[0]) }}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="flex flex-col md:flex-row gap-2 w-full">
+    <mat-form-field appearance="fill" class="w-full md:w-1/2">
+      <mat-label>Delegación/municipio</mat-label>
+      <input
+        matInput
+        formControlName="delegacion_municipio"
+        placeholder="Ingrese el municipio o delegación"
+        required
+      />
+      <mat-error *ngIf="form.controls['delegacion_municipio']?.invalid">
+        {{
+          getMessage(getArray(form.controls["delegacion_municipio"].errors)[0])
+        }}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="w-full md:w-1/2">
+      <mat-label>Ciudad</mat-label>
+      <input
+        matInput
+        formControlName="ciudad"
+        placeholder="Ingrese la ciudad"
+        required
+      />
+      <mat-error *ngIf="form.controls['ciudad']?.invalid">
+        {{ getMessage(getArray(form.controls["ciudad"].errors)[0]) }}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="flex flex-col md:flex-row gap-2 w-full">
+    <mat-form-field appearance="fill" class="w-full md:w-1/2">
+      <mat-label>País</mat-label>
+      <input
+        matInput
+        formControlName="pais"
+        placeholder="Ingrese el país"
+        required
+      />
+      <mat-error *ngIf="form.controls['pais']?.invalid">
+        {{ getMessage(getArray(form.controls["pais"].errors)[0]) }}
+      </mat-error>
+    </mat-form-field>
+  </div>
+</form>

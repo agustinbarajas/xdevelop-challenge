@@ -1,0 +1,155 @@
+<form [formGroup]="form" class="flex flex-col gap-2 w-full pt-5">
+  <div class="flex flex-col md:flex-row gap-2 w-full">
+    <mat-form-field appearance="fill" class="w-full md:w-1/2">
+      <mat-label>Nombres</mat-label>
+      <input
+        matInput
+        formControlName="nombres"
+        placeholder="Ingrese sus nombres"
+        required
+      />
+      <mat-error *ngIf="form.controls['nombres']?.invalid">
+        {{ getMessage(getArray(form.controls["nombres"].errors)[0]) }}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="w-full md:w-1/2">
+      <mat-label>Apellidos</mat-label>
+      <input
+        matInput
+        formControlName="apellidos"
+        placeholder="Ingrese sus apellidos"
+        required
+      />
+      <mat-error *ngIf="form.controls['apellidos']?.invalid">
+        {{ getMessage(getArray(form.controls["apellidos"].errors)[0]) }}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="flex flex-col md:flex-row gap-2 w-full">
+    <mat-form-field appearance="fill" class="w-full md:w-1/2">
+      <mat-label>Teléfono</mat-label>
+      <input
+        matInput
+        formControlName="telefono"
+        placeholder="Ingrese su número de teléfono"
+        required
+      />
+      <mat-hint>Ingrese solo 10 números</mat-hint>
+      <mat-error *ngIf="form.controls['telefono']?.invalid">
+        {{ getMessage(getArray(form.controls["telefono"].errors)[0]) }}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="w-full md:w-1/2">
+      <mat-label>Celular</mat-label>
+      <input
+        matInput
+        formControlName="celular"
+        placeholder="Ingrese su número de celular"
+        required
+      />
+      <mat-hint>Ingrese solo 10 números</mat-hint>
+      <mat-error *ngIf="form.controls['celular']?.invalid">
+        {{ getMessage(getArray(form.controls["celular"].errors)[0]) }}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="flex flex-col md:flex-row gap-2 w-full">
+    <mat-form-field appearance="fill" class="w-full md:w-1/2">
+      <mat-label>Fecha de nacimiento</mat-label>
+      <div class="flex justify-between">
+        <input
+          matInput
+          formControlName="fecha_origen"
+          [matDatepicker]="picker"
+        />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </div>
+      <mat-error *ngIf="form.controls['fecha_origen']?.invalid">
+        {{ getMessage(getArray(form.controls["fecha_origen"].errors)[0]) }}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="flex flex-col md:flex-row gap-2 w-full">
+    <mat-form-field appearance="fill" class="w-full md:w-1/2">
+      <mat-label>Correo</mat-label>
+      <input
+        matInput
+        type="email"
+        formControlName="email"
+        placeholder="Ingrese su correo electrónico"
+        required
+      />
+      <mat-error *ngIf="form.controls['email']?.invalid">
+        {{ getMessage(getArray(form.controls["email"].errors)[0]) }}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="w-full md:w-1/2">
+      <mat-label>Contraseña</mat-label>
+      <input
+        matInput
+        type="password"
+        formControlName="password"
+        placeholder="Ingrese su contraseña"
+        required
+      />
+      <mat-hint>
+        Ingrese 8 caracteres con por lo menos una letra mayúscula, una minúscula
+        y un número
+      </mat-hint>
+      <mat-error *ngIf="form.controls['password']?.invalid">
+        {{ getMessage(getArray(form.controls["password"].errors)[0]) }}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="flex flex-col md:flex-row gap-2 w-full">
+    <mat-form-field appearance="fill" class="w-full md:w-1/2">
+      <mat-label>Cargo</mat-label>
+      <input
+        matInput
+        formControlName="cargo"
+        placeholder="Ingrese su cargo"
+        required
+      />
+      <mat-error *ngIf="form.controls['cargo']?.invalid">
+        {{ getMessage(getArray(form.controls["cargo"].errors)[0]) }}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="flex flex-col md:flex-row gap-2 w-full">
+    <mat-form-field appearance="fill" class="w-full md:w-1/2">
+      <mat-label>Forma de enterado</mat-label>
+      <input
+        matInput
+        formControlName="forma_enterado"
+        placeholder="Ingrese la forma de enterado"
+        required
+      />
+      <mat-error *ngIf="form.controls['forma_enterado']?.invalid">
+        {{ getMessage(getArray(form.controls["forma_enterado"].errors)[0]) }}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="w-full md:w-1/2">
+      <mat-label>Otra forma de entreado</mat-label>
+      <input
+        matInput
+        formControlName="otro_forma_enterado"
+        placeholder="Ingrese otra forma de enterado"
+        required
+      />
+      <mat-error *ngIf="form.controls['otro_forma_enterado']?.invalid">
+        {{
+          getMessage(getArray(form.controls["otro_forma_enterado"].errors)[0])
+        }}
+      </mat-error>
+    </mat-form-field>
+  </div>
+</form>
