@@ -10,8 +10,6 @@ import {
   SignupSuccessResponse,
 } from 'src/app/types/request-response.type';
 import { createSignupForm } from 'src/app/utils/createSignupForm.helper';
-import { getErrorMessage } from 'src/app/utils/getErrorMessage.helper';
-import { parseErrorsToArray } from 'src/app/utils/parseErrorsToArray.helper';
 
 @Component({
   selector: 'app-signup',
@@ -20,8 +18,6 @@ import { parseErrorsToArray } from 'src/app/utils/parseErrorsToArray.helper';
 export class SignupComponent implements OnDestroy {
   private _signupForm: FormGroup;
   private readonly unsubscribe$ = new Subject();
-  readonly getMessage = getErrorMessage;
-  readonly getArray = parseErrorsToArray;
 
   get personalForm(): FormGroup {
     return this._signupForm.controls['personalForm'] as FormGroup;
